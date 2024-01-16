@@ -1,14 +1,16 @@
 require("dotenv").config();
 const express = require("express");
+const port = process.env.PORT || 5001;
 
 const User = require("./user/model")
 
-const port = process.env.PORT || 5001;
+
 
 const app = express();
-
+const userRouter = require("./user/routes");
 app.use(express.json());
 
+app.use(userRouter);
 
 const syncTables = async () => {
     await User.sync();
