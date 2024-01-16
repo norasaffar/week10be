@@ -1,1 +1,6 @@
-console.log("hello world")
+
+const {Sequelize} = require("sequelize");
+const sequelize = new Sequelize(process.env.MYSQL_URI);
+sequelize.authenticate();
+console.log("db conenction working")
+module.exports = sequelize;
